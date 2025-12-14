@@ -1,6 +1,6 @@
 # Feature Specification: Physical AI & Humanoid Robotics
 
-**Feature Branch**: `0001-physical-ai-humanoid-robotics`
+**Feature Branch**: `001-physical-ai-humanoid-robotics`
 **Created**: 2025-12-14
 **Status**: Draft
 **Input**: User description: "$ARGUMENTS"
@@ -81,3 +81,13 @@ Educators need a structured, comprehensive resource that can be used as a refere
 - **SC-003**: Educators can build a complete Physical AI curriculum spanning 2023-2033 using the book content
 - **SC-004**: The RAG chatbot has zero hallucinations and only responds with content from the book
 - **SC-005**: The Docusaurus website renders all 12 chapters with proper navigation and mobile responsiveness
+
+## Clarifications
+
+### Session 2025-12-14
+
+- Q: For the Context7 MCP grounding requirement (FR-007), what should happen when technical content cannot be verified through MCP documentation? → A: Strict validation with automatic rejection of any content not verifiable through MCP documentation
+- Q: For the RAG chatbot's source attribution requirement, how specific should the references be when citing book content? → A: All RAG responses must include specific chapter references with page/section numbers
+- Q: For the Docusaurus website and RAG chatbot, what is the required uptime/availability given that this is an educational resource used by students and educators? → A: Authenticated RAG chatbot access is required. Users must log in before using the RAG chatbot. Each authenticated student receives: 20 tokens per day, 1 token consumed per question, Daily token quota resets every 24 hours. Availability requirements: 99.9% uptime, 24/7 availability and support for students and educators
+- Q: For the code examples in the book (FR-004 mentions "code examples"), what level of validation is required to ensure they work as documented? → A: All code examples must be tested in actual ROS 2/Gazebo/NVIDIA Isaac environments
+- Q: What are the specific performance requirements for the RAG chatbot response time and Docusaurus website page load times to ensure good user experience for students and educators? → A: Performance requirements: <200ms response time for RAG queries, <3s page load for Docusaurus
