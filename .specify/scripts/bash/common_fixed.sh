@@ -136,34 +136,19 @@ get_feature_paths() {
     # Use prefix-based lookup to support multiple branches per spec
     local feature_dir=$(find_feature_dir_by_prefix "$repo_root" "$current_branch")
 
-    # Use printf to output assignments with proper quoting
-    {
-        printf "REPO_ROOT="
-        printf "%q" "$repo_root"
-        printf "\nCURRENT_BRANCH="
-        printf "%q" "$current_branch"
-        printf "\nHAS_GIT="
-        printf "%q" "$has_git_repo"
-        printf "\nFEATURE_DIR="
-        printf "%q" "$feature_dir"
-        printf "\nFEATURE_SPEC="
-        printf "%q" "$feature_dir/spec.md"
-        printf "\nIMPL_PLAN="
-        printf "%q" "$feature_dir/plan.md"
-        printf "\nTASKS="
-        printf "%q" "$feature_dir/tasks.md"
-        printf "\nRESEARCH="
-        printf "%q" "$feature_dir/research.md"
-        printf "\nDATA_MODEL="
-        printf "%q" "$feature_dir/data-model.md"
-        printf "\nQUICKSTART="
-        printf "%q" "$feature_dir/quickstart.md"
-        printf "\nCONTRACTS_DIR="
-        printf "%q" "$feature_dir/contracts"
-        printf "\n"
-    }
+    # Fixed version: Properly quote variables to handle paths with spaces
+    printf "REPO_ROOT='%s'\n" "$repo_root"
+    printf "CURRENT_BRANCH='%s'\n" "$current_branch"
+    printf "HAS_GIT='%s'\n" "$has_git_repo"
+    printf "FEATURE_DIR='%s'\n" "$feature_dir"
+    printf "FEATURE_SPEC='%s'\n" "$feature_dir/spec.md"
+    printf "IMPL_PLAN='%s'\n" "$feature_dir/plan.md"
+    printf "TASKS='%s'\n" "$feature_dir/tasks.md"
+    printf "RESEARCH='%s'\n" "$feature_dir/research.md"
+    printf "DATA_MODEL='%s'\n" "$feature_dir/data-model.md"
+    printf "QUICKSTART='%s'\n" "$feature_dir/quickstart.md"
+    printf "CONTRACTS_DIR='%s'\n" "$feature_dir/contracts"
 }
 
 check_file() { [[ -f "$1" ]] && echo "  ✓ $2" || echo "  ✗ $2"; }
 check_dir() { [[ -d "$1" && -n $(ls -A "$1" 2>/dev/null) ]] && echo "  ✓ $2" || echo "  ✗ $2"; }
-
